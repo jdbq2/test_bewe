@@ -14,6 +14,7 @@ const Profile = () => {
           justifyContent: "space-between",
           alignItems: "center",
           position: "relative",
+          mb: 3,
         }}
       >
         <Link to="/dashboard">

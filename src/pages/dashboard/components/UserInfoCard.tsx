@@ -8,15 +8,13 @@ export const UserInfoCard: FC = () => {
   return (
     <Box
       sx={{
-        width: {
-          xs: "100%",
-          md: "40%",
-        },
+        width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
+        marginTop: "58px",
       }}
     >
       <Link to="/profile">

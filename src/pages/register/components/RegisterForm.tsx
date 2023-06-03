@@ -53,7 +53,10 @@ export const RegisterForm = () => {
         variant="h3"
         sx={{
           width: "100%",
-          marginTop: "50px",
+          marginTop: {
+            xs: "50px",
+            md: "20px",
+          },
           marginBottom: "20px",
           fontWeight: "bold",
         }}

@@ -64,17 +64,35 @@ export const useStore = create<StoreProps>((set) => ({
   },
   getLinks: async () => {
     try {
-      const { data } = await linkAPI.get("");
-      console.log(data);
+      const { data } = await linkAPI.get("/");
+      localStorage.setItem("links", JSON.stringify(data.data));
+      set((state) => ({
+        ...state,
+        links: data.data,
+      }));
     } catch (error) {
       console.log(error);
     }
   },
   addLink: (data: Link) => {
-    console.log(data);
+    const localStorageLinks = JSON.parse(localStorage.getItem("links") || "[]");
+    localStorageLinks.push(data);
+    localStorage.setItem("links", JSON.stringify(localStorageLinks));
+    set((state) => ({
+      ...state,
+      links: [...state.links, data],
+    }));
   },
   deleteLink: (linkId: number) => {
-    console.log(linkId);
+    let localStorageLinks = JSON.parse(localStorage.getItem("links") || "[]");
+    localStorageLinks = localStorageLinks.filter(
+      (el: Link) => el.id !== linkId
+    );
+    localStorage.setItem("links", JSON.stringify(localStorageLinks));
+    set((state) => ({
+      ...state,
+      links: state.links.filter((el) => el.id !== linkId),
+    }));
   },
   setAddress: (data: string) => {
     localStorage.setItem("address", data);

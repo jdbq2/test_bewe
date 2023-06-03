@@ -10,12 +10,13 @@ export const Container: FC<Props> = ({ children }) => {
     <Box
       sx={{
         width: "100vw",
-        height: "100vh",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "center",
         padding: "45px 36px",
+        overflowX: "hidden",
       }}
     >
       {children}

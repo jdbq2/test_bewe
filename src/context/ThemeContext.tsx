@@ -1,4 +1,9 @@
-import { ThemeProvider, createTheme, responsiveFontSizes } from "@mui/material";
+import {
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+  CssBaseline,
+} from "@mui/material";
 import { FC } from "react";
 
 interface Props {
@@ -27,7 +32,12 @@ const ThemeContext: FC<Props> = ({ children }) => {
 
   theme = responsiveFontSizes(theme);
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default ThemeContext;

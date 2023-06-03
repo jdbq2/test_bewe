@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const linkAPI = axios.create({
-  baseURL: "https://tecnical.bewe.co/links",
+  baseURL: "http://tecnical.bewe.co/links",
   headers: {
     "Content-Type": "application/json;charset=UTF-8",
     "Access-Control-Allow-Origin": "*",
