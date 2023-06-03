@@ -22,7 +22,7 @@ const Dashboard = () => {
           sx={{ mt: 5, textAlign: "center" }}
           color={"primary.dark"}
         >
-          ¡Guarda tu primer Link!
+          Save yout first Link!
         </Typography>
       )}
     </>

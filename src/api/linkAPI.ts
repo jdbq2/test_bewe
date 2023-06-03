@@ -1,11 +1,16 @@
 import axios from "axios";
 
 export const linkAPI = axios.create({
-  baseURL: "tecnical.bewe.co/links",
+  baseURL: "https://tecnical.bewe.co/links",
+  headers: {
+    "Content-Type": "application/json;charset=UTF-8",
+    "Access-Control-Allow-Origin": "*",
+    Accept: "*/*",
+  },
 });
 
 linkAPI.interceptors.request.use((config) => {
-  const token = "TU_TOKEN_BEARER_AQUI";
+  const token = localStorage.getItem("token");
   config.headers.Authorization = `Bearer ${token}`;
   return config;
 });

@@ -1,6 +1,8 @@
 import { Box, Button, useTheme } from "@mui/material";
+import { useStore } from "../store/store";
 
 export const PrivateHeader = () => {
+  const { logout } = useStore();
   const theme = useTheme();
   return (
     <Box
@@ -18,6 +20,7 @@ export const PrivateHeader = () => {
         <img src="/logo_sm.svg" alt="" />
       </Box>
       <Button
+        onClick={() => logout()}
         variant="outlined"
         color="primary"
         sx={{
