@@ -12,8 +12,8 @@ interface StoreProps {
   logout: () => void;
   signin: (userData: { email: string; password: string }) => void;
   getLinks: () => void;
-  addLink: (data: Link) => void;
-  deleteLink: (linkId: number) => void;
+  addLink: () => void;
+  deleteLink: () => void;
   setAddress: (data: string) => void;
 }
 
@@ -74,25 +74,17 @@ export const useStore = create<StoreProps>((set) => ({
       console.log(error);
     }
   },
-  addLink: (data: Link) => {
-    const localStorageLinks = JSON.parse(localStorage.getItem("links") || "[]");
-    localStorageLinks.push(data);
-    localStorage.setItem("links", JSON.stringify(localStorageLinks));
-    set((state) => ({
-      ...state,
-      links: [...state.links, data],
-    }));
+  addLink: () => {
+    set((state) => {
+      state.getLinks();
+      return { ...state };
+    });
   },
-  deleteLink: (linkId: number) => {
-    let localStorageLinks = JSON.parse(localStorage.getItem("links") || "[]");
-    localStorageLinks = localStorageLinks.filter(
-      (el: Link) => el.id !== linkId
-    );
-    localStorage.setItem("links", JSON.stringify(localStorageLinks));
-    set((state) => ({
-      ...state,
-      links: state.links.filter((el) => el.id !== linkId),
-    }));
+  deleteLink: () => {
+    set((state) => {
+      state.getLinks();
+      return { ...state };
+    });
   },
   setAddress: (data: string) => {
     localStorage.setItem("address", data);

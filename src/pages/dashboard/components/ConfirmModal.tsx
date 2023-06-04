@@ -16,10 +16,7 @@ const ConfirmModal: FC<Props> = ({ linkID, isOpen, closeModalFunction }) => {
       await linkAPI.delete("/", {
         data: { id: JSON.stringify(linkID) },
       });
-      if (linkID) {
-        deleteLink(linkID);
-      }
-
+      deleteLink();
       closeModalFunction();
     } catch (error) {
       console.log(error);

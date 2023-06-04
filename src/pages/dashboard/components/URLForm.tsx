@@ -1,4 +1,4 @@
-import { Box, Button, TextField, useTheme } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { linkAPI } from "../../../api/linkAPI";
 import { useStore } from "../../../store/store";
@@ -15,8 +15,8 @@ export const URLForm = () => {
 
   const onSubmit = async (formData: FormValues) => {
     try {
-      const { data } = await linkAPI.post("/add", formData);
-      addLink(data.data);
+      await linkAPI.post("/add", formData);
+      addLink();
       reset();
     } catch (error) {
       console.log(error);

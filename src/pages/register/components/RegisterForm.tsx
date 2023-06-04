@@ -22,18 +22,11 @@ export const RegisterForm = () => {
       if (data.message == "success") {
         signin({ email: formValues.email, password: formValues.password });
       }
-    } catch (error: any) {
-      if (
-        error.response.data.error ==
-        "SQLITE_CONSTRAINT: UNIQUE constraint failed: user.email"
-      ) {
-        setError("email", {
-          type: "manual",
-          message: "User already registered, please Login",
-        });
-      } else {
-        console.log(error);
-      }
+    } catch (error: unknown) {
+      setError("email", {
+        type: "manual",
+        message: "Something went wrong, user already registered?",
+      });
     }
   };
   return (
