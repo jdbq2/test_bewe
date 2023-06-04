@@ -2,12 +2,11 @@ import { FC } from "react";
 import { Button, Typography } from "@mui/material";
 
 import { Link } from "react-router-dom";
-import { Container } from "../../components/Container";
 import { PublicHeader } from "../../components/PublicHeader";
 
 const Privacy: FC = () => {
   return (
-    <Container>
+    <>
       <PublicHeader>
         <Link to="/auth/register">
           <Button
@@ -55,7 +54,7 @@ const Privacy: FC = () => {
         assumenda, ut velit labore illum! A soluta et facere distinctio nam
         assumenda excepturi.
       </Typography>
-    </Container>
+    </>
   );
 };
 
